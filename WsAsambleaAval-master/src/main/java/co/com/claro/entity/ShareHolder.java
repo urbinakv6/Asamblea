@@ -1,14 +1,22 @@
 package co.com.claro.entity;
 
-import lombok.*;
+import java.util.Date;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.Table;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 
-import java.util.Date;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
@@ -19,13 +27,13 @@ import java.util.List;
 @IdClass(ShareHolderId.class)
 public class ShareHolder {
 
-	@CsvBindByName(column = "TIP_ID")
+	@CsvBindByName(column = "TIPO DOCUMENTO")
 	@Id
     @Column(name = "TIP_ID", length = 3)
     @Getter @Setter
     private String tipId;
 
-	@CsvBindByName(column = "NUM_ID")
+	@CsvBindByName(column = "NUMERO DOCUMENTO")
 	@Id
     @Column(name = "NUM_ID", length = 20)
     @Getter @Setter
@@ -42,7 +50,7 @@ public class ShareHolder {
     @Getter @Setter
     private String nombresApellidos;
 
-	@CsvBindByName(column = "CANT. ACCIONES")
+	@CsvBindByName(column = "CORREO")
 	@Column(name = "CORREO", length = 100)
     @Getter @Setter
     private String correo;
@@ -52,23 +60,23 @@ public class ShareHolder {
     @Getter @Setter
     private boolean apoderado;
 
-	@CsvBindByName(column = "PARTICIPACION (%)")
+	@CsvBindByName(column = "SALDO TOTAL")
 	@Column(name = "SALDO_TOTAL", length = 15, scale = 3)
     @Getter @Setter
     private Double saldoTotal;
 
-	@CsvBindByName(column = "IP_ACCESO")
+	@CsvBindByName(column = "IP ACCESO")
 	@Column(name = "IP_ACCESO", length = 20)
     @Getter @Setter
     private String ipAcceso;
 
-	@CsvBindByName(column = "FECHA_ULTIMO_ACCESO")
+	@CsvBindByName(column = "FECHA ULTIMO ACCESO")
 	@CsvDate(value = "dd/MM/yyyy HH:mm")
 	@Column(name = "FECHA_ULTIMO_ACCESO")
     @Getter @Setter
     private Date fechaUltimoAcceso;
 
-	@CsvBindByName(column = "FECHA_CREACION")
+	@CsvBindByName(column = "FECHA CREACION")
 	@CsvDate(value = "dd/MM/yyyy HH:mm")
 	@Column(name = "FECHA_CREACION")
     @Getter @Setter
@@ -88,5 +96,20 @@ public class ShareHolder {
 	@Column(name = "PREGUNTAS")
     @Getter @Setter
     private String Preguntas;
+	
+	@CsvBindByName(column = "CANT. ACCIONES")
+	@Column(name = "CANT_ACCIONES", length = 20)
+    @Getter @Setter
+    private String cantAcciones;
+	
+	@CsvBindByName(column = "CLAVE ACCESO")
+	@Column(name = "PASSWORD", length = 20)
+    @Getter @Setter
+    private String password;
+	
+	@CsvBindByName(column = "PARTICIPACION")
+	@Column(name = "PARTICIPACION", length = 15, scale = 3)
+    @Getter @Setter
+    private Double participacion;
 
 }

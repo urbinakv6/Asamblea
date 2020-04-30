@@ -23,22 +23,22 @@ public class AttorneyXShareHolder {
     @Getter @Setter
     private Long id;
 
-    @CsvBindByName(column = "TIP_ID APODERADO")
+    @CsvBindByName(column = "TIP DOC APODERADO")
     @Column(name = "APO_TIP_ID", length = 3)
     @Getter @Setter
     private String  apoTipId;
 
-    @CsvBindByName(column = "NUM_ID APODERADO")
+    @CsvBindByName(column = "NUM DOC APODERADO")
     @Column(name = "APO_NUM_ID", length = 20)
     @Getter @Setter
     private String apoNumId;
 
-    @CsvBindByName(column = "TIP_ID ACCIONISTA")
+    @CsvBindByName(column = "TIP DOC ACCIONISTA")
     @Column(name = "ACC_TIP_ID", length = 3)
     @Getter @Setter
     private String accTipId;
 
-    @CsvBindByName(column = "NUM_ID ACCIONISTA")
+    @CsvBindByName(column = "NUM DOC ACCIONISTA")
     @Column(name = "ACC_NUM_ID", length = 20)
     @Getter @Setter
     private String accNumId;
@@ -48,7 +48,7 @@ public class AttorneyXShareHolder {
     @Getter @Setter
     private String accNumAccion;
 
-    @CsvBindByName(column = "FECHA_CREACION")
+    @CsvBindByName(column = "FECHA CREACION")
     @CsvDate(value = "dd/MM/yyyy HH:mm")
     @Column(name = "FEC_CREA")
     @Getter @Setter

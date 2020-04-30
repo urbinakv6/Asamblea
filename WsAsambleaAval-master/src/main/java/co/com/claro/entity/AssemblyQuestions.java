@@ -33,12 +33,12 @@ public class AssemblyQuestions {
     @Getter @Setter
     private Long id;
 
-    @CsvBindByName(column = "PREGUNTA")
+    @CsvBindByName(column = "NO. PREGUNTA")
     @Column(name = "PREGUNTA",length = 500)
     @Getter @Setter
     private String pregunta;
 
-    @CsvBindByName(column = "DESC_PREGUNTA")
+    @CsvBindByName(column = "PREGUNTA")
     @Column(name = "DESC_PREGUNTA", length = 500)
     @Getter @Setter
     private String descPregunta;
@@ -53,24 +53,24 @@ public class AssemblyQuestions {
     @Getter @Setter
     private String estado;
 
-    @CsvBindByName(column = "FEC_CREA")
+    @CsvBindByName(column = "FECHA CREACION")
     @CsvDate(value = "dd/MM/yyyy HH:mm")
     @Column(name = "FEC_CREA")
     @Getter @Setter
     private Date fehCrea;
 
-    @CsvBindByName(column = "USER_CREA")
+    @CsvBindByName(column = "USUARIO CREADOR")
     @Column(name = "USER_CREA",length = 20)
     @Getter @Setter
     private String userCrea;
 
-    @CsvBindByName(column = "FEC_MODIFICA")
+    @CsvBindByName(column = "FECHA MODIFICACION")
     @CsvDate(value = "dd/MM/yyyy HH:mm")
     @Column(name = "FEC_MODIFICA")
     @Getter @Setter
     private Date fehModifica;
 
-    @CsvBindByName(column = "USER_MOD")
+    @CsvBindByName(column = "USUARIO MODIFICADOR")
     @Column(name = "USER_MOD", length = 20)
     @Getter @Setter
     private String userMod;
