@@ -43,7 +43,6 @@ import lombok.extern.slf4j.Slf4j;
 public class ShareHolderController {
     private final ShareHolderService shareHolderService;
     private final AttorneyXShareholderService xShareholderService;
-    GenericResponse response = new GenericResponse("00","Ok","Ok");
 
     @Autowired
     public ShareHolderController(ShareHolderService shareHolderService,
@@ -129,25 +128,21 @@ public class ShareHolderController {
     
     @PostMapping("/upload-csv-file")
     public GenericResponse uploadCSVFile(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-        	response.setReturnCode("400");
-        	response.setDescriptoCode("Invalid request");
-        	response.setMenssage("Please select a CSV file to upload");
+    	GenericResponse response = new GenericResponse();
+    	if (file == null || file.isEmpty()) {
+        	return new GenericResponse("400", "Invalid request", "Please select a CSV file to upload");
         } else {
             try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), "ISO-8859-1"))) {
 				CsvToBean<ShareHolder> csvToBean = new CsvToBeanBuilder<ShareHolder>(reader)
                         .withType(ShareHolder.class).withIgnoreLeadingWhiteSpace(true).build();
                 List<ShareHolder> shareHolder = csvToBean.parse();
                 shareHolderService.uploadShareHolders(shareHolder);
+                response = new GenericResponse("200", "Ok", "CSV file loaded successfully");
             } catch (Exception ex) {
-                response.setReturnCode("500");
-                response.setDescriptoCode("Error");
-                response.setMenssage("An error occurred while processing the CSV file");
+            	ex.printStackTrace();
+            	response = new GenericResponse("500", "Error", "An error occurred while processing the CSV file");
             }
         }
-        response.setReturnCode("200");
-        response.setDescriptoCode("Ok");
-        response.setMenssage("CSV file loaded successfully");
         return response;
     }
 

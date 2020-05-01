@@ -39,8 +39,11 @@ public class AssemblyQuestionService {
     }
     
     public void uploadAssemblyQuestions(List<AssemblyQuestions> questions) {
-    	assemblyQuestionRepository.saveAll(questions);
+    	this.assemblyQuestionRepository.saveAll(questions);
     }
 
+    public void deleteAssemblyQuestions() {
+    	this.assemblyQuestionRepository.deleteAll();
+    }
 
 }

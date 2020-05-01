@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface ShareHolderRepository extends JpaRepository<ShareHolder, Long> {
-    Optional<ShareHolder> findByTipIdAndNumIdAndNumeroAccion(String tipId, String numId, String numeroAccion);
+    Optional<ShareHolder> findByTipIdIgnoreCaseAndNumIdAndNumeroAccion(String tipId, String numId, String numeroAccion);
     Optional<ShareHolder> findByNumeroAccion(String numeroAccion);
     Optional<ShareHolder> findByTipIdAndNumId(String tipId, String numId);
 

@@ -1,14 +1,14 @@
 package co.com.claro.service;
 
-import co.com.claro.entity.AssemblyQuestions;
-import co.com.claro.entity.ShareHolder;
-import co.com.claro.repo.ShareHolderRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
+import co.com.claro.entity.ShareHolder;
+import co.com.claro.repo.ShareHolderRepository;
 
 @Service
 @Transactional
@@ -22,7 +22,7 @@ public class ShareHolderService {
     }
 
     public Optional<ShareHolder> getShareHolderById(String tipId, String numId, String numAccion){
-        return this.shareHolderRepository.findByTipIdAndNumIdAndNumeroAccion(tipId, numId, numAccion);
+        return this.shareHolderRepository.findByTipIdIgnoreCaseAndNumIdAndNumeroAccion(tipId, numId, numAccion);
     }
 
     public Optional<ShareHolder> getShareHolderByDoc(String tipId, String numId){
@@ -49,6 +49,6 @@ public class ShareHolderService {
     }
     
     public void uploadShareHolders(List<ShareHolder> shareHolder) {
-    	shareHolderRepository.saveAll(shareHolder);
+    	this.shareHolderRepository.saveAll(shareHolder);
     }
 }

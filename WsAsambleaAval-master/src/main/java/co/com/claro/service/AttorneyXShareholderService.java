@@ -41,6 +41,6 @@ public class AttorneyXShareholderService {
     }
     
     public void uploadAttorneyXShareHolder(List<AttorneyXShareHolder> xShareHolder) {
-    	attorneyXShareholdeRepository.saveAll(xShareHolder);
+    	this.attorneyXShareholdeRepository.saveAll(xShareHolder);
     }
 }
