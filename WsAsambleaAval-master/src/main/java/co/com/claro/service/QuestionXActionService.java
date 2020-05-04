@@ -1,13 +1,14 @@
 package co.com.claro.service;
 
-import co.com.claro.entity.QuestionXAction;
-import co.com.claro.repo.QuestionXActionRepository;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
+import co.com.claro.entity.QuestionXAction;
+import co.com.claro.repo.QuestionXActionRepository;
 
 @Service
 @Transactional
@@ -34,4 +35,5 @@ public class QuestionXActionService {
     public QuestionXAction updateQuestionXAction(QuestionXAction xAction){
         return this.xActionRepository.save(xAction);
     }
+    
 }

@@ -1,10 +1,19 @@
 package co.com.claro.entity;
 
-import lombok.*;
-
-import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.IdClass;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
@@ -18,33 +27,26 @@ public class QuestionXAction {
     @Id
     @SequenceGenerator(name = "questionxaction_id_generator", sequenceName = "questionxaction_id_seq")
     @GeneratedValue(generator = "questionxaction_id_generator")
-    @Getter @Setter
     private Long id;
 
     @Id
     @Column(name = "ID_PREGUNTA", length = 15)
-    @Getter @Setter
     private Long idPregunta;
 
     @Id
     @Column(name = "NUMERO_ACCION", length = 20)
-    @Getter @Setter
     private String numeroAccion;
 
     @Column(name = "RESPUESTA", length = 20)
-    @Getter @Setter
     private String respuesta;
 
     @Column(name = "OBSERVACION", length = 80)
-    @Getter @Setter
     private String observacion;
 
     @Column(name = "FEC_RESPUESTA")
-    @Getter @Setter
     private Date fecRespuesta;
 
     @Column(name = "IP_RESPUESTA", length = 20)
-    @Getter @Setter
     private String ipRespuesta;
 
 }
