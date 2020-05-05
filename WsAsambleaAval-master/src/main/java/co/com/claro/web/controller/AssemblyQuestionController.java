@@ -83,7 +83,9 @@ public class AssemblyQuestionController {
         } else {
             try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), "ISO-8859-1"))) {
 				CsvToBean<AssemblyQuestions> csvToBean = new CsvToBeanBuilder<AssemblyQuestions>(reader)
-                        .withType(AssemblyQuestions.class).withIgnoreLeadingWhiteSpace(true).build();
+                        .withType(AssemblyQuestions.class)
+                        .withThrowExceptions(true)
+                        .withIgnoreLeadingWhiteSpace(true).build();
                 List<AssemblyQuestions> questions = csvToBean.parse();
                 assemblyQuestionService.deleteAssemblyQuestions();
                 assemblyQuestionService.uploadAssemblyQuestions(questions);

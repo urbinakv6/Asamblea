@@ -126,24 +126,24 @@ public class ShareHolderController {
         return this.shareHolderService.updateShareHolder(shareHolder);
     }
     
-    @PostMapping("/upload-csv-file")
-    public GenericResponse uploadCSVFile(@RequestParam("file") MultipartFile file) {
-    	GenericResponse response = new GenericResponse();
-    	if (file == null || file.isEmpty()) {
-        	return new GenericResponse("400", "Invalid request", "Please select a CSV file to upload");
-        } else {
-            try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), "ISO-8859-1"))) {
-				CsvToBean<ShareHolder> csvToBean = new CsvToBeanBuilder<ShareHolder>(reader)
-                        .withType(ShareHolder.class).withIgnoreLeadingWhiteSpace(true).build();
-                List<ShareHolder> shareHolder = csvToBean.parse();
-                shareHolderService.uploadShareHolders(shareHolder);
-                response = new GenericResponse("200", "Ok", "CSV file loaded successfully");
-            } catch (Exception ex) {
-            	ex.printStackTrace();
-            	response = new GenericResponse("500", "Error", "An error occurred while processing the CSV file");
-            }
-        }
-        return response;
-    }
+	@PostMapping("/upload-csv-file")
+	public GenericResponse uploadCSVFile(@RequestParam("file") MultipartFile file) {
+		GenericResponse response = new GenericResponse();
+		if (file == null || file.isEmpty()) {
+			return new GenericResponse("400", "Invalid request", "Please select a CSV file to upload");
+		} else {
+			try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream(), "ISO-8859-1"))) {
+				CsvToBean<ShareHolder> csvToBean = new CsvToBeanBuilder<ShareHolder>(reader).withType(ShareHolder.class)
+						.withIgnoreLeadingWhiteSpace(true).build();
+				List<ShareHolder> shareHolder = csvToBean.parse();
+				shareHolderService.uploadShareHolders(shareHolder);
+				response = new GenericResponse("200", "Ok", "CSV file loaded successfully");
+			} catch (Exception ex) {
+				ex.printStackTrace();
+				response = new GenericResponse("500", "Error", "An error occurred while processing the CSV file");
+			}
+		}
+		return response;
+	}
 
 }
